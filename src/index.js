@@ -8,6 +8,7 @@ import Education  from "./pages/Education";
 import Skills from "./pages/Skills";
 import Project from "./pages/Project";
 import Contact from "./pages/Contact";
+import Footer from "../src/components/Footer"
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
        <Project/>
         <Contact/>
       </main>
+      <Footer/>
     </>
   );
 }

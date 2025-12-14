@@ -6,6 +6,7 @@ import Education from "./Education";
 import Skills from "./Skills";
 import Projects from "./Project";
 import Contact from "./Contact";
+import Footer from "../components/Footer"
 
 export default function MainPage() {
   return (
@@ -20,6 +21,7 @@ export default function MainPage() {
         <section id="projects"><Projects /></section>
         <section id="contact"><Contact /></section>
       </main>
+       <Footer />
     </>
   );
 }
