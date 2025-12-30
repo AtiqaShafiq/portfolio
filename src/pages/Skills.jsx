@@ -37,48 +37,44 @@ export default function Skills() {
   const [activeTab, setActiveTab] = useState("technical");
 
   return (
-    <section id="skills" className="w-full py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-
+    <section id="skills" className="w-full py-16 md:py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold">
             Skills & <span className="text-blue-600">Expertise</span>
           </h2>
-          <p className="mt-3 text-gray-600">
+          <p className="mt-2 text-gray-600 text-sm sm:text-base">
             Explore my strengths across tech, tools, and mindset.
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-gray-100 rounded-full p-1 flex gap-1">
-            <TabButton
-              label="Technical"
-              icon={faCode}
-              active={activeTab === "technical"}
-              onClick={() => setActiveTab("technical")}
-            />
-            <TabButton
-              label="Soft Skills"
-              icon={faUsers}
-              active={activeTab === "soft"}
-              onClick={() => setActiveTab("soft")}
-            />
-            <TabButton
-              label="Tools"
-              icon={faScrewdriverWrench}
-              active={activeTab === "tools"}
-              onClick={() => setActiveTab("tools")}
-            />
-          </div>
+        <div className="flex flex-wrap justify-center gap-2 mb-8 sm:mb-12">
+          <TabButton
+            label="Technical"
+            icon={faCode}
+            active={activeTab === "technical"}
+            onClick={() => setActiveTab("technical")}
+          />
+          <TabButton
+            label="Soft Skills"
+            icon={faUsers}
+            active={activeTab === "soft"}
+            onClick={() => setActiveTab("soft")}
+          />
+          <TabButton
+            label="Tools"
+            icon={faScrewdriverWrench}
+            active={activeTab === "tools"}
+            onClick={() => setActiveTab("tools")}
+          />
         </div>
 
         {/* Content */}
         {activeTab === "technical" && <Technical />}
         {activeTab === "soft" && <SoftSkills />}
         {activeTab === "tools" && <Tools />}
-
       </div>
     </section>
   );
@@ -89,10 +85,8 @@ function TabButton({ label, icon, active, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition ${
-        active
-          ? "bg-blue-600 text-white"
-          : "text-gray-600 hover:bg-white"
+      className={`px-4 sm:px-5 py-2 rounded-full text-sm sm:text-base font-medium flex items-center gap-2 transition ${
+        active ? "bg-blue-600 text-white" : "text-gray-600 hover:bg-white"
       }`}
     >
       <FontAwesomeIcon icon={icon} />
@@ -104,7 +98,7 @@ function TabButton({ label, icon, active, onClick }) {
 /* ---------------- TECHNICAL ---------------- */
 function Technical() {
   return (
-    <div className="grid md:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       <TechCard
         title="Frontend Development"
         icon={faReact}
@@ -115,15 +109,11 @@ function Technical() {
           { name: "JavaScript", value: 88, icon: faJs },
         ]}
       />
-
       <TechCard
         title="Backend Development"
         icon={faNodeJs}
-        skills={[
-          { name: "Node.js", value: 85, icon: faNodeJs },
-        ]}
+        skills={[{ name: "Node.js", value: 85, icon: faNodeJs }]}
       />
-
       <TechCard
         title="Database & Cloud"
         icon={faDatabase}
@@ -139,22 +129,21 @@ function Technical() {
 
 function TechCard({ title, icon, skills }) {
   return (
-    <div className="bg-white rounded-xl shadow p-6">
-      <h3 className="font-semibold mb-4 flex items-center gap-2 text-blue-600">
+    <div className="bg-white rounded-xl shadow p-4 sm:p-6">
+      <h3 className="font-semibold mb-4 flex items-center gap-2 text-blue-600 text-base sm:text-lg">
         <FontAwesomeIcon icon={icon} />
         {title}
       </h3>
 
       {skills.map((skill) => (
         <div key={skill.name} className="mb-4">
-          <div className="flex justify-between text-sm mb-1">
+          <div className="flex justify-between text-xs sm:text-sm mb-1">
             <span className="flex items-center gap-2">
               {skill.icon && <FontAwesomeIcon icon={skill.icon} />}
               {skill.name}
             </span>
             <span>{skill.value}%</span>
           </div>
-
           <div className="h-2 bg-gray-200 rounded-full">
             <div
               className="h-2 bg-blue-600 rounded-full"
@@ -209,20 +198,18 @@ function SoftSkills() {
   ];
 
   return (
-    <div className="grid md:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       {skills.map((s) => (
         <div
           key={s.title}
-          className="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-md transition"
+          className="bg-white rounded-xl shadow-sm p-4 sm:p-6 text-center hover:shadow-md transition"
         >
           <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center rounded-full bg-blue-100">
             <FontAwesomeIcon icon={s.icon} className="text-2xl text-blue-600" />
           </div>
-
-          <h4 className="font-semibold text-lg">{s.title}</h4>
-          <p className="text-sm text-gray-600 mt-2">{s.desc}</p>
-
-          <span className="inline-block mt-4 px-4 py-1 text-xs rounded-full bg-blue-50 text-blue-600 font-medium">
+          <h4 className="font-semibold text-base sm:text-lg">{s.title}</h4>
+          <p className="text-xs sm:text-sm text-gray-600 mt-2">{s.desc}</p>
+          <span className="inline-block mt-3 px-4 py-1 text-xs sm:text-sm rounded-full bg-blue-50 text-blue-600 font-medium">
             {s.level}
           </span>
         </div>
@@ -234,7 +221,7 @@ function SoftSkills() {
 /* ---------------- TOOLS ---------------- */
 function Tools() {
   return (
-    <div className="grid md:grid-cols-3 gap-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       <ToolColumn
         title="Development Tools"
         icon={faScrewdriverWrench}
@@ -244,15 +231,11 @@ function Tools() {
           { name: "NPM", icon: faNpm },
         ]}
       />
-
       <ToolColumn
         title="Design Tools"
         icon={faPaintBrush}
-        items={[
-          { name: "Figma", icon: faFigma },
-        ]}
+        items={[{ name: "Figma", icon: faFigma }]}
       />
-
       <ToolColumn
         title="Testing & Deployment"
         icon={faRocket}
@@ -271,16 +254,15 @@ function Tools() {
 function ToolColumn({ title, icon, items }) {
   return (
     <div>
-      <h4 className="font-semibold text-blue-600 mb-4 flex items-center gap-2">
+      <h4 className="font-semibold text-blue-600 mb-4 flex items-center gap-2 text-base sm:text-lg">
         <FontAwesomeIcon icon={icon} />
         {title}
       </h4>
-
       <div className="space-y-3">
         {items.map((item) => (
           <div
             key={item.name}
-            className="flex items-center gap-3 bg-gray-100 px-4 py-3 rounded-lg text-sm hover:bg-blue-50 transition"
+            className="flex items-center gap-3 bg-gray-100 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm hover:bg-blue-50 transition"
           >
             <FontAwesomeIcon icon={item.icon} className="text-blue-600" />
             {item.name}
